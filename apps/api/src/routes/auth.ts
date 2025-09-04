@@ -43,7 +43,7 @@ export async function authRoutes(app: FastifyInstance) {
     const ok = await bcrypt.compare(password, user.passwordHash);
     if (!ok) return reply.code(401).send({ error: "invalid_credentials" });
 
-    const roles = user.roles.map(r => r.role.name);
+    const roles = user.roles.map((r: any) => r.role.name);
     const token = app.jwt.sign({ sub: user.id, roles }, { expiresIn: "8h" });
 
     return { token, user: { id: user.id, email: user.email, displayName: user.displayName, roles } };
@@ -58,7 +58,7 @@ export async function authRoutes(app: FastifyInstance) {
       id: user?.id,
       email: user?.email,
       displayName: user?.displayName,
-      roles: user?.roles.map(r => r.role.name) ?? []
+      roles: user?.roles.map((r: any) => r.role.name) ?? []
     };
   });
 

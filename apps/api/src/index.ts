@@ -4,6 +4,7 @@ import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
 import { authRoutes } from "./routes/auth.js";
 import { ensureBaseRoles } from "./lib/roles.js";
+import { registerModules } from "./modules.js";
 
 const app = Fastify({ logger: true });
 
@@ -18,6 +19,7 @@ await app.register(cors, {
 await app.register(jwt, { secret: process.env.JWT_SECRET! });
 
 await app.register(authRoutes);
+await registerModules(app);
 
 app.get("/healthz", () => ({ ok: true }));
 
