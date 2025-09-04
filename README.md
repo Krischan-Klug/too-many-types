@@ -105,7 +105,7 @@ Your token is stored in LocalStorage, `/me` shows your roles.
 
 ---
 
-## 👑 Promote first admin (optional)
+## 👑 Promote first admin
 
 In pgAdmin Query Tool (replace email):
 
@@ -156,16 +156,6 @@ Test with your JWT: `GET http://localhost:4000/admin/only` should return 200 for
 - **`@prisma/client did not initialize`** → Run `npm run prisma:generate` inside `apps/api`.
 - **CORS errors** → Confirm `CORS_ORIGINS="http://localhost:5173"` in `.env` and restart API.
 - **pg connection refused** → Ensure PostgreSQL is running on `localhost:5432`, and DB/user exist.
-
----
-
-## 🗺️ Roadmap (next small steps)
-
-- `/auth/change-password`
-- Users list & role management (admin only)
-- Shared validation schemas (`packages/shared`)
-- File storage & metadata (binary uploads with versioning)
-- Realtime, desktop app (Tauri) later
 
 ---
 
