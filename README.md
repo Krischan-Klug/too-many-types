@@ -77,7 +77,7 @@ JWT_SECRET="change_me_to_a_long_random_value"
 API_HOST="0.0.0.0"
 API_PORT=4000
 CORS_ORIGINS="http://localhost:5173"
-MODULES="example-module-1","example-module-2","example-module-3"
+MODULES="example-module-1,example-module-2,example-module-3"
 ```
 
 > The API scripts load this root `.env` via **dotenv-cli**. No need to duplicate it.
