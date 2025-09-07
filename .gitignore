@@ -4,6 +4,7 @@ dist/
 *.tsbuildinfo
 .env
 .env.*
+!.env.sample
 .DS_Store
 Thumbs.db
 .vscode/

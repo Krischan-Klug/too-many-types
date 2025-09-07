@@ -11,7 +11,7 @@ A minimal & pragmatic local-first ERP foundation built with **Fastify + PostgreS
 - **API**: Fastify v5 + Zod validation, modular routes
 - **DB**: PostgreSQL + Prisma (schema versioned with migrations)
 - **Web**: Vite + React (TS) minimal UI for login/register
-- **CI**: GitHub Actions with Postgres service (builds API & Web)
+- **Modules**: Auto-load Fastify plugins placed under `packages/` (see `packages/example-module`)
 
 ---
 
@@ -33,6 +33,7 @@ too-many-types/
 │  ├─ api/                 # Fastify + Prisma (schema in apps/api/prisma)
 │  └─ web/                 # Vite + React
 ├─ packages/
+│  ├─ example-module/      # sample Fastify plugin module
 │  └─ shared/              # (future) shared types/schemas/ui
 ├─ .env                    # local dev env (not committed)
 ├─ package.json            # root (workspaces, aggregate scripts)
@@ -71,13 +72,19 @@ Create a file **`.env`** in the repo root:
 
 ```env
 DATABASE_URL="postgresql://erp:erp@localhost:5432/erp"
-JWT_SECRET="change_me_to_a_long_random_value"  # use something long & random
+JWT_SECRET="change_me_to_a_long_random_value"
 API_HOST="0.0.0.0"
 API_PORT=4000
 CORS_ORIGINS="http://localhost:5173"
 ```
 
 > The API scripts load this root `.env` via **dotenv-cli**. No need to duplicate it.
+
+---
+
+## 🧩 Modules
+
+Modules are separate npm packages under `packages/`. The API and web app automatically load any modules found there at startup. The `packages/example-module` workspace demonstrates a minimal Fastify plugin.
 
 ---
 
