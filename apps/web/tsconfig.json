@@ -8,7 +8,8 @@
     "baseUrl": ".",
     "types": [
       "vite/client"
-    ]
+    ],
+    "noEmit": true
   },
   "include": [
     "src"

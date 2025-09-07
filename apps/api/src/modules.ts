@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 /**
  * Automatically registers Fastify plugins from packages/*.
@@ -33,7 +33,7 @@ export async function registerModules(app: FastifyInstance) {
 
     const modPath = path.join(packagesDir, dir.name, main);
     try {
-      const mod = await import(modPath);
+      const mod = await import(pathToFileURL(modPath).href);
       const plugin = mod.default;
       if (typeof plugin === "function") {
         await app.register(plugin);
