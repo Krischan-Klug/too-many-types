@@ -11,4 +11,6 @@ Thumbs.db
 .idea/
 apps/web/.vite/
 apps/web/dist/
+apps/web/.next/
+apps/web/out/
 apps/api/dist/
