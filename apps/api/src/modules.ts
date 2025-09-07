@@ -1,12 +1,14 @@
 import { FastifyInstance } from "fastify";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 /**
  * Automatically registers Fastify plugins from packages/*.
  * Each package must export a default plugin.
  */
 export async function registerModules(app: FastifyInstance) {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const packagesDir = path.resolve(__dirname, "../../../packages");
   let dirs: fs.Dirent[] = [];
   try {
