@@ -75,7 +75,7 @@ DATABASE_URL="postgresql://erp:erp@localhost:5432/erp"
 JWT_SECRET="change_me_to_a_long_random_value"
 API_HOST="0.0.0.0"
 API_PORT=4000
-CORS_ORIGINS="http://localhost:5173"
+CORS_ORIGINS="http://localhost:3000"
 ```
 
 > The API scripts load this root `.env` via **dotenv-cli**. No need to duplicate it.
@@ -104,10 +104,10 @@ npm run dev    # http://localhost:4000
 
 # 3) Start the web app
 cd ../../apps/web
-npm run dev    # http://localhost:5173
+npm run dev    # http://localhost:3000
 ```
 
-Open `http://localhost:5173`, register a user (role `user`), then log in.  
+Open `http://localhost:3000`, register a user (role `user`), then log in.
 Your token is stored in LocalStorage, `/me` shows your roles.
 
 ---
@@ -161,7 +161,7 @@ Test with your JWT: `GET http://localhost:4000/admin/only` should return 200 for
 - **`missing secret` at startup** → Ensure `JWT_SECRET` is set in root `.env`. API is started with `dotenv -e ../../.env`.
 - **Prisma can’t find schema** → It’s at `apps/api/prisma/schema.prisma`. Use the provided npm scripts only.
 - **`@prisma/client did not initialize`** → Run `npm run prisma:generate` inside `apps/api`.
-- **CORS errors** → Confirm `CORS_ORIGINS="http://localhost:5173"` in `.env` and restart API.
+- **CORS errors** → Confirm `CORS_ORIGINS="http://localhost:3000"` in `.env` and restart API.
 - **pg connection refused** → Ensure PostgreSQL is running on `localhost:5432`, and DB/user exist.
 
 ---
