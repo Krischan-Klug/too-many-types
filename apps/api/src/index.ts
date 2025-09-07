@@ -9,7 +9,7 @@ import { registerModules } from "./modules.js";
 const app = Fastify({ logger: true });
 
 await app.register(cors, {
-  origin: (process.env.CORS_ORIGINS || "http://localhost:5173")
+  origin: (process.env.CORS_ORIGINS || "http://localhost:3000")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean),
